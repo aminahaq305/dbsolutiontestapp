@@ -13,7 +13,7 @@ function Trains() {
     const currentId = postList[postList.length - 1].train_id;
     console.log(currentId);
     setId(currentId + 1);
-    Axios.post("http://localhost:3002/train/create", {
+    Axios.post("https://railroad-backend.onrender.com/train/create", {
       id: id,
       name: name,
       model: model,
@@ -23,9 +23,11 @@ function Trains() {
   };
 
   useEffect(() => {
-    Axios.get("http://localhost:3002/train/get").then((data) => {
-      setPostList(data.data);
-    });
+    Axios.get("https://railroad-backend.onrender.com/train/get").then(
+      (data) => {
+        setPostList(data.data);
+      }
+    );
   }, []);
 
   return (
