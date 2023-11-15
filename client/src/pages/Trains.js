@@ -29,36 +29,42 @@ function Trains() {
       }
     );
   }, []);
-
   return (
-    <div className="Trains">
-      <div className="TrainContainer">
+    <div className="CustomTable">
+      <h1>Active running trains</h1>
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Model</th>
+          <th>Capacity (seats)</th>
+        </tr>
         {postList.map((val, key) => {
           return (
-            <div className="Train">
-              <h1 className="post-title">{val.train_name}</h1>
-              <h4>{val.train_model}</h4>
-              <h5>Capacity: {val.train_no_of_seats}</h5>
-            </div>
+            <tr key={key}>
+              <td>{val.train_name}</td>
+              <td>{val.train_model}</td>
+              <td>{val.train_no_of_seats}</td>
+            </tr>
           );
         })}
-      </div>
+      </table>
       <div className="AddTrainContainer">
-        <label>Train name: </label>
+        <h1>Register a new train</h1>
+        <label>Name: </label>
         <input
           type="text"
           onChange={(e) => {
             setName(e.target.value);
           }}
         />
-        <label>Train model: </label>
+        <label>Model: </label>
         <input
           type="text"
           onChange={(e) => {
             setModel(e.target.value);
           }}
         />
-        <label>Train number of seats: </label>
+        <label>Capacity (seats): </label>
         <input
           type="text"
           onChange={(e) => {

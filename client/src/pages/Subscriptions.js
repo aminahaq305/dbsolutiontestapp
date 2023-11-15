@@ -14,24 +14,27 @@ function Subscriptions() {
   }, []);
 
   return (
-    <div className="Subscriptions">
-      <div className="SubscriptionContainer">
+    <div className="CustomTable">
+      <h1>Subscription tiers</h1>
+      <table>
+        <tr>
+          <th>Rank</th>
+          <th>Description</th>
+          <th>Fee per year</th>
+          <th>Points needed for free ride</th>
+        </tr>
         {postList.map((val, key) => {
           return (
-            <div className="Subscription">
-              <h1 className="subscription-title">
-                {val.subscription_membership_rank}
-              </h1>
-              <h4>{val.subscription_description}</h4>
-              <h5>Cost: {val.subscription_fees}/year</h5>
-              <h5>
-                Points needed for free train ride:{" "}
-                {val.subscription_points_free}
-              </h5>
-            </div>
+            <tr key={key}>
+              <td>{val.subscription_membership_rank}</td>
+              <td>{val.subscription_description}</td>
+              <td>{val.subscription_fees}</td>
+
+              <td>{val.subscription_points_free}</td>
+            </tr>
           );
         })}
-      </div>
+      </table>
     </div>
   );
 }

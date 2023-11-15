@@ -21,24 +21,31 @@ function Passengers() {
 
   console.log(membershipList);
   return (
-    <div className="Passengers">
-      <div className="PassengerContainer">
+    <div className="CustomTable">
+      <h1>Active registered passengers</h1>
+      <table>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Membership Rank</th>
+        </tr>
         {postList.map((val, key) => {
           const membershipRank = membershipList.find(
             (membership) => membership.subscription_id === val.subscription_id
           );
           return (
-            <div className="Passenger">
-              <h1 className="passenger-title">
-                {val.passenger_first_name} {val.passenger_last_name}
-              </h1>
-              <h4>{val.passenger_email}</h4>
-              <h5>Points: {val.subscription_points}</h5>
-              <h5>Rank: {membershipRank.subscription_membership_rank}</h5>
-            </div>
+            <tr key={key}>
+              <td>{val.passenger_first_name}</td>
+              <td>{val.passenger_last_name}</td>
+              <td>{val.passenger_email}</td>
+              {membershipRank && (
+                <td>{membershipRank.subscription_membership_rank}</td>
+              )}
+            </tr>
           );
         })}
-      </div>
+      </table>
     </div>
   );
 }
