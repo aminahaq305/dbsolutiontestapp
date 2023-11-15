@@ -24,7 +24,7 @@ function Passengers() {
     <div className="Passengers">
       <div className="PassengerContainer">
         {postList.map((val, key) => {
-          const membershipRank = membershipList.filter(
+          const membershipRank = membershipList.find(
             (membership) => membership.subscription_id === val.subscription_id
           );
           return (
@@ -34,8 +34,7 @@ function Passengers() {
               </h1>
               <h4>{val.passenger_email}</h4>
               <h5>Points: {val.subscription_points}</h5>
-              <h5>Rank id: {val.subscription_id}</h5>
-              <h5>Rank: {membershipRank[0].subscription_membership_rank}</h5>
+              <h5>Rank: {membershipRank.subscription_membership_rank}</h5>
             </div>
           );
         })}
