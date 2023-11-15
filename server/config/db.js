@@ -10,11 +10,7 @@ const db = mysql.createConnection({
   database: "defaultdb",
   ssl: {
     rejectUnauthorized: true,
-    ca: fs
-      .readFileSync(
-        path.resolve("/Users/amina/Documents/testapp/server/config/ca.pem")
-      )
-      .toString(),
+    ca: fs.readFileSync(path.join(__dirname, "ca.pem")).toString(),
   },
 });
 
