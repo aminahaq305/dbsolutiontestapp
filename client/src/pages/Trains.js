@@ -4,17 +4,14 @@ import "../App.css";
 
 function Trains() {
   const [postList, setPostList] = useState([]);
-  const [id, setId] = useState(0);
   const [name, setName] = useState("");
   const [model, setModel] = useState("");
   const [noOfSeats, setNoOfSeats] = useState(0);
 
   const submitPost = () => {
     const currentId = postList[postList.length - 1].train_id;
-    console.log(currentId);
-    setId(currentId + 1);
     Axios.post("https://railroad-backend.onrender.com/train/create", {
-      id: id,
+      id: currentId + 1,
       name: name,
       model: model,
       no_of_seats: noOfSeats,
